@@ -1,5 +1,6 @@
 import sys
 import requests
+import argparse
 import subprocess
 
 def runcmd(cmd, verbose=False, *args, **kwargs) -> str:
@@ -21,8 +22,8 @@ if __name__ == "__main__":
         # parser = argparse.ArgumentParser(description='Process some integers.')
         parser = MyParser()
         parser.add_argument('--user', metavar='UUID', type=str,required=True, help='The username for the client')
-        parser.add_argument('--nebula', metavar='nebual_path',default="nebula",type=str,required=False, help='The username for the client')
+        parser.add_argument('--nebula', metavar='nebula_path',default="nebula",type=str,required=False, help='The username for the client')
         args = parser.parse_args()
     except:
         exit(1)
-    runcmd(f"./{args.nebula} -config {args.user}.yaml", verbose=False)
+    runcmd(f"./{args.nebula} -config {args.user}.yaml", verbose=True)

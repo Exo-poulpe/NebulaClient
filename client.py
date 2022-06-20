@@ -51,10 +51,6 @@ def POST_with_jwt(url:str,jwt:str,hdr:str,data:str,output_file:str) -> str:
         exit(1)
     open(f"{output_file}","wb").write(r.read())
 
-def create_pub_priv_key(username:str,path_nebula:str="./nebula-cert") -> str:
-    # print(f"{path_nebula} keygen -out-key {username}.priv -out-pub {username}.pub")
-    return runcmd(f"{path_nebula} keygen -out-key {username}.priv -out-pub {username}.pub",verbose=False)
-
 class MyParser(argparse.ArgumentParser):
     def error(self, message):
         sys.stderr.write('error: %s\n' % message)
@@ -69,13 +65,9 @@ if __name__ == "__main__":
         parser.add_argument('--passw', metavar='Password', type=str,required=True, help='The password of the client')
         parser.add_argument('--ip',metavar='ip', default="127.0.0.1",type=str,help='IP of the server (default : 127.0.0.1)')
         parser.add_argument('--port',metavar='port', default="8080",type=str,help='The port of the server (default : 8080)')
-        parser.add_argument('--gen_keys',action='store_true',help='Create public key and private key with UUID and password')
         args = parser.parse_args()
     except:
         exit(1)
-
-    if args.gen_keys:
-        create_pub_priv_key(args.user,"./nebula-cert")
 
     user = args.user
     passw = args.passw
