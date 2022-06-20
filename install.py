@@ -52,7 +52,7 @@ if __name__ == "__main__":
         args = parser.parse_args()
     except:
         exit(1)
-    if not os.path.exists(args.nebula):
+    if not os.path.exists("nebula"):
         runcmd('wget ' + link, verbose=False)
         runcmd('tar xvf ' + program, verbose=False)
     
