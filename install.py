@@ -1,5 +1,6 @@
 import sys
 import requests
+import os
 import argparse
 import subprocess
 
@@ -51,7 +52,8 @@ if __name__ == "__main__":
         args = parser.parse_args()
     except:
         exit(1)
-    runcmd('wget ' + link, verbose=False)
-    runcmd('tar xvf ' + program, verbose=False)
+    if not os.path.exists(args.nebula):
+        runcmd('wget ' + link, verbose=False)
+        runcmd('tar xvf ' + program, verbose=False)
     
-    create_cert(args.user)
+    create_pub_priv_key(args.user)
