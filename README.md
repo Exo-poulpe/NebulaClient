@@ -18,6 +18,7 @@ cloné le repo
 ```console
 git clone https://github.com/Exo-poulpe/NebulaClient.git
 cd NebulaClient
+bash installer.sh
 ```
 
 Lancé l'installation et créations des clé
@@ -29,3 +30,4 @@ Ensuite le program nebula et les clés privée et publique seront créer il faud
 ```console
 python3 client.py --user <user_id> --passw <password> --ip <ip>
 ```
+

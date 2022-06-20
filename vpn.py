@@ -26,4 +26,4 @@ if __name__ == "__main__":
         args = parser.parse_args()
     except:
         exit(1)
-    runcmd(f"./{args.nebula} -config {args.user}.yaml", verbose=True)
+    runcmd(f"./{args.nebula} -config {args.user}.yaml > nebula.log", verbose=False)
